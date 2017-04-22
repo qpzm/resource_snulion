@@ -6,9 +6,10 @@
   <div class="row">
     <% @place.members.each do |member| %>
       <div class="col-md-2 panel panel-default center">
+        <%= image_tag member.picture, size: "50" %>
         <h3><%= member.name %></h3>
         <h3><%= member.fun %> </h3>
-        <%= link_to "추방", "#", class: "btn btn-primary", style: "margin-bottom:10px" %>
+        <%= link_to "추방", member_path(member), method: 'delete', class: "btn btn-primary", style: "margin-bottom:10px" %>
       </div>
     <% end %>
   </div>

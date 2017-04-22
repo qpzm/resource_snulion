@@ -1,0 +1,11 @@
+<div class="col-md-8 col-md-offset-2" >
+<div class="form-group">
+  <%= f.label :name,  "이름" %>
+  <%= f.text_field :name, size: '60*12', class: 'form-control' %>
+</div>
+<div class ="form-group">
+  <%= f.label :fun, "흥" %>
+  <%= f.number_field :fun, class: 'form-control', onchange: "alert('당신의 흥을 진실되게 말하시오!');" %>
+</div>
+<%= f.submit "Create", class: 'btn btn-primary btn-row' %>
+</div>

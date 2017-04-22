@@ -3,43 +3,28 @@
     <%=image_tag "https://pbs.twimg.com/media/Con7IcNVIAAx6Nk.jpg", style: "width:600px;height:auto"  %>
   </div>
 
-  <h2>전체 흥 /200 <h2>
-  <div class="progress">
-    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
-      <span class="sr-only">40% Complete (success)</span>
-  </div>
-    </div>
+  <h2>전체 흥 <%= @sum_fun %>/200 <h2>
+      <div class="progress">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow= "<%= @sum_fun / 2 %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @sum_fun / 2 %>%">
+          <span class="sr-only">10% Complete (success)</span>
+        </div>
+      </div>
 
-  <div class="row">
-     <h4>파티참여자</h4>
-  </div>
-  <div class="row">
-    <div class="col-md-2 panel panel-default center">
-      <h3>오르페우스</h3>
-      <h3>흥 : 100 </h3>
-      <%= link_to "추방", "#", class: "btn btn-primary", style: "margin-bottom:10px" %>
-      <%= link_to "바꾸기", "#", class: "btn btn-primary", style: "margin-bottom:10px" %>
-    </div>
-    <div class="col-md-2 panel panel-default center">
-      <h3>디오니소스</h3>
-      <h3>흥 : 0 </h3>
-      <%= link_to "추방", "#", class: "btn btn-primary", style: "margin-bottom:10px" %>
-    </div>
-    <div class="col-md-2 panel panel-default center">
-      <h3>임정건</h3>
-      <h3>흥 : 50 </h3>
-      <%= link_to "추방", "#", class: "btn btn-primary", style: "margin-bottom:10px" %>
-    </div>
-    <div class="col-md-2 panel panel-default center">
-      <h3>김태완</h3>
-      <h3>흥 :-50  </h3>
-      <%= link_to "추방", "#", class: "btn btn-primary", style: "margin-bottom:10px" %>
-    </div>
-    <div class="col-md-2 panel panel-default center">
-      <h3>행인</h3>
-      <h3>흥 : 0</h3>
-      <%= link_to "추방", "#", class: "btn btn-primary", style: "margin-bottom:10px" %>
-    </div>
-  </div>
-  <%= link_to "초대&창조", "#", class: "btn btn-primary", style: "margin-bottom:10px" %>
-</div>
+      <div class="row">
+        <h4>파티참여자</h4>
+      </div>
+      <div class="row">
+        <% @visitors.each do |v| %>
+          <div class="col-md-2 panel panel-default center">
+            <%= image_tag "#{v.picture}", size:"50"%>
+            <h3><%=v.name %></h3>
+            <h3>흥 : <%= v.fun %></h3>
+            <%= link_to "추방", visitor_path(v), method: 'delete', class: "btn btn-primary", style: "margin-bottom:10px" %>
+            <%= link_to "바꾸기", edit_visitor_path(v), class: "btn btn-primary", style: "margin-bottom:10px" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="row">
+        <%= link_to "초대&창조", new_visitor_path, class: "btn btn-primary btn-row", style: "margin-bottom:10px" %>
+      </div>
+    </div><!-- end of container -->

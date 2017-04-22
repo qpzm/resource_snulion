@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 20160925051908) do
 
   create_table "members", force: :cascade do |t|
+    t.string   "picture"
     t.string   "name"
     t.integer  "place_id"
     t.string   "fun"
@@ -22,13 +23,14 @@ ActiveRecord::Schema.define(version: 20160925051908) do
   end
 
   create_table "places", force: :cascade do |t|
-    t.string   "name"
     t.string   "img_url"
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "visitors", force: :cascade do |t|
+    t.string   "picture"
     t.string   "name"
     t.integer  "fun"
     t.datetime "created_at", null: false
